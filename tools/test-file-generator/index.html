@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>QA Test File Generator · qa-tools</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:light;--bg:#f5f7fb;--panel:#fff;--ink:#172033;--muted:#64748b;--line:#dbe2eb;--accent:#2563eb;--soft:#eff6ff;--input:#fff}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0c1220;--panel:#151e2e;--ink:#e6edf7;--muted:#9aabc2;--line:#304058;--accent:#78a8ff;--soft:#1c304e;--input:#111827}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);line-height:1.5}a{color:var(--accent)}header{border-bottom:1px solid var(--line);background:var(--panel)}.top{max-width:1000px;margin:auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-weight:750;text-decoration:none;color:var(--ink)}.top nav{display:flex;align-items:center;gap:16px}.small{font-size:13px;color:var(--muted)}main{max-width:1000px;margin:36px auto;padding:0 24px 60px}.back{font-size:14px;text-decoration:none}h1{font-size:clamp(26px,4vw,37px);margin:10px 0 8px;letter-spacing:-.03em}h2{font-size:18px;margin:0 0 16px}.intro{color:var(--muted);margin:0 0 28px}.layout{display:grid;grid-template-columns:1.1fr 1fr;gap:20px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;min-width:0}.fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}label{display:block;font-size:14px;font-weight:650;margin-bottom:7px}.field-wide{grid-column:1/-1}input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--input);border:1px solid var(--line);border-radius:9px;padding:11px 12px;outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--soft)}.hint{font-size:12px;color:var(--muted);margin:6px 0 0}.error{color:#cf3e4e;font-size:13px;min-height:20px}button{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);padding:9px 14px}button:hover{border-color:var(--accent)}button.primary{background:#2563eb;color:white;border-color:#2563eb;font-weight:650}button:disabled{opacity:.5;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:15px}.output{margin:12px 0 0;background:var(--bg);padding:16px;border:1px solid var(--line);border-radius:10px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;min-height:95px;font:13px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace}.notice{margin:18px 0 0;color:var(--muted);font-size:13px}.notice strong{color:var(--ink)}.status{font-size:13px;color:var(--muted)}.theme{white-space:nowrap}@media(max-width:760px){.layout{grid-template-columns:1fr}main{margin-top:24px}.card{padding:20px}}@media(max-width:460px){.fields{grid-template-columns:1fr}.field-wide{grid-column:auto}.top{padding:14px 18px}main{padding:0 18px 40px}}
+</style>
+</head>
+<body>
+<header><div class="top"><a class="brand" href="../../">qa-tools</a><nav><a class="small" href="../../">All tools</a><button class="theme" id="themeToggle" type="button" aria-label="Toggle color theme">Theme</button></nav></div></header>
+<main>
+<a class="back" href="../../">← All tools</a>
+<h1>QA Test File Generator</h1>
+<p class="intro">Generate a Windows CMD command to create a test file of a specified size, from 1 MB to 10 GB.</p>
+<div class="layout">
+<section class="card" aria-labelledby="inputHeading">
+<h2 id="inputHeading">File parameters</h2>
+<div class="fields">
+<div><label for="size">File size</label><input id="size" type="number" min="1" max="10240" step="1" inputmode="numeric"><p class="hint">1 MB – 10 GB (10,240 MiB)</p></div>
+<div><label for="unit">Unit</label><select id="unit"><option value="MB">MB</option><option value="GB">GB</option></select></div>
+<div><label for="extension">Extension</label><select id="extension"><option>bin</option><option>csv</option><option>txt</option><option>json</option><option>xml</option><option>pdf</option><option>xlsx</option><option>docx</option><option>zip</option><option>png</option><option>jpg</option><option>mp4</option><option value="custom">Custom…</option></select></div>
+<div><label for="customExtension">Custom extension</label><input id="customExtension" maxlength="16" placeholder="e.g. dat" disabled></div>
+<div class="field-wide"><label for="filename">File name (without extension)</label><input id="filename" maxlength="150" autocomplete="off" placeholder="test-file"></div>
+<div class="field-wide"><label for="folder">Destination folder (Windows)</label><input id="folder" autocomplete="off" spellcheck="false" placeholder="C:\Temp\QA"></div>
+</div>
+<p class="error" id="error" role="alert" aria-live="polite"></p>
+<p class="hint">The destination folder is created automatically if it does not exist. An existing file is not overwritten.</p>
+</section>
+<section class="card" aria-labelledby="outputHeading">
+<h2 id="outputHeading">Ready-to-run command</h2>
+<p class="small">Copy this into <code>cmd.exe</code> on Windows. The generated file contains zero bytes, not real document content.</p>
+<pre class="output" id="command" aria-live="polite"></pre>
+<div class="actions"><button type="button" id="copy" class="primary">Copy command</button><button type="button" id="reset">Reset</button><span class="status" id="status" role="status"></span></div>
+<p class="notice"><strong>Important:</strong> Changing an extension to .pdf, .xlsx, .zip, etc. does not produce a valid PDF, Excel workbook, ZIP archive, or other formatted document. This tool creates size-based dummy files for upload limits, storage, and negative testing.</p>
+<p class="notice">All settings are stored only in this browser's <code>localStorage</code>. No file paths or entered values are uploaded to GitHub or a server.</p>
+</section>
+</div>
+</main>
+<script>
+(()=>{
+'use strict';
+const key='qa-tools.test-file-generator.v1',themeKey='qa-tools.theme';
+const ids=['size','unit','extension','customExtension','filename','folder'];
+const el=Object.fromEntries([...ids,'error','command','copy','reset','status','themeToggle'].map(id=>[id,document.getElementById(id)]));
+const defaults={size:'10',unit:'MB',extension:'bin',customExtension:'',filename:'test-file',folder:'C:\\Temp\\QA'};
+const supported=['bin','csv','txt','json','xml','pdf','xlsx','docx','zip','png','jpg','mp4','custom'];
+let saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}')||{}}catch{}
+for(const id of ids){el[id].value=(typeof saved[id]==='string'&& (id!=='extension'||supported.includes(saved[id])))?saved[id]:defaults[id]}
+function theme(t){document.documentElement.dataset.theme=t;el.themeToggle.textContent=t==='dark'?'☀ Light':'☾ Dark';try{localStorage.setItem(themeKey,t)}catch{}}
+let initial='';try{initial=localStorage.getItem(themeKey)||''}catch{}theme(initial==='dark'||initial==='light'?initial:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+el.themeToggle.addEventListener('click',()=>theme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
+function validate(){
+const unit=el.unit.value;
+const n=Number(el.size.value);
+const max=unit==='GB'?10:10240;
+if(!el.size.value.trim()||!Number.isInteger(n)||n<1||n>max)return 'Enter an integer file size from 1 to '+max+' '+unit+'.';
+const ext=(el.extension.value==='custom'?el.customExtension.value:el.extension.value).trim().replace(/^\./,'').toLowerCase();
+if(!/^[a-z0-9]{1,16}$/.test(ext))return 'Extension must contain 1–16 letters or digits.';
+const name=el.filename.value.trim();
+if(!name||name==='.'||name==='..'||/[\\/:*?"<>|%\x00-\x1f!^&]/.test(name)||/[. ]$/.test(name)||/^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)/i.test(name))return 'Enter a valid Windows file name (without extension).';
+const folder=el.folder.value.trim().replace(/[\\/]+$/,'');
+if(!/^[A-Za-z]:\\/.test(folder)||/["<>|%\x00-\x1f!^&]/.test(folder)||/\/(?!$)/.test(folder)||/(?:^|\\)\.\.(?:\\|$)/.test(folder))return 'Enter an absolute Windows folder path (e.g. C:\\Temp\\QA), without CMD special characters.';
+return {n,unit,ext,name,folder};
+}
+function update(){
+el.customExtension.disabled=el.extension.value!=='custom';
+const v=validate();if(typeof v==='string'){el.error.textContent=v;el.command.textContent='Fix the file parameters to generate a command.';el.copy.disabled=true}else{
+el.error.textContent='';
+const bytes=v.n*(v.unit==='GB'?1073741824:1048576);
+const path=v.folder+'\\'+v.name+'.'+v.ext;
+el.command.textContent='if not exist "'+v.folder+'" mkdir "'+v.folder+'" && fsutil file createnew "'+path+'" '+bytes;
+// When the folder exists, still create the file.
+el.command.textContent='if not exist "'+v.folder+'" mkdir "'+v.folder+'"\r\nfsutil file createnew "'+path+'" '+bytes;
+el.copy.disabled=false;
+}
+const state=Object.fromEntries(ids.map(id=>[id,el[id].value]));try{localStorage.setItem(key,JSON.stringify(state))}catch{}
+el.status.textContent='';
+}
+for(const id of ids){el[id].addEventListener('input',update);el[id].addEventListener('change',update)}
+el.copy.addEventListener('click',async()=>{if(el.copy.disabled)return;const value=el.command.textContent;try{await navigator.clipboard.writeText(value);el.status.textContent='Copied'}catch{const ta=document.createElement('textarea');ta.value=value;document.body.append(ta);ta.select();try{el.status.textContent=document.execCommand('copy')?'Copied':'Select and copy the command above'}catch{el.status.textContent='Select and copy the command above'}ta.remove()}});
+el.reset.addEventListener('click',()=>{for(const id of ids)el[id].value=defaults[id];update()});
+update();
+})();
+</script>
+</body>
+</html>
