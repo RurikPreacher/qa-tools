@@ -8,7 +8,7 @@
 <style>
 :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:light;--bg:#f5f7fb;--panel:#fff;--ink:#172033;--muted:#64748b;--line:#dbe2eb;--accent:#2563eb;--soft:#eff6ff;--input:#fff}
 :root[data-theme="dark"]{color-scheme:dark;--bg:#0c1220;--panel:#151e2e;--ink:#e6edf7;--muted:#9aabc2;--line:#304058;--accent:#78a8ff;--soft:#1c304e;--input:#111827}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);line-height:1.5}a{color:var(--accent)}header{border-bottom:1px solid var(--line);background:var(--panel)}.top{max-width:1000px;margin:auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-weight:750;text-decoration:none;color:var(--ink)}.top nav{display:flex;align-items:center;gap:16px}.small{font-size:13px;color:var(--muted)}main{max-width:1000px;margin:36px auto;padding:0 24px 60px}.back{font-size:14px;text-decoration:none}h1{font-size:clamp(26px,4vw,37px);margin:10px 0 8px;letter-spacing:-.03em}h2{font-size:18px;margin:0 0 16px}.intro{color:var(--muted);margin:0 0 28px}.layout{display:grid;grid-template-columns:1.1fr 1fr;gap:20px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;min-width:0}.fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}label{display:block;font-size:14px;font-weight:650;margin-bottom:7px}.field-wide{grid-column:1/-1}input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--input);border:1px solid var(--line);border-radius:9px;padding:11px 12px;outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--soft)}.hint{font-size:12px;color:var(--muted);margin:6px 0 0}.error{color:#cf3e4e;font-size:13px;min-height:20px}button{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);padding:9px 14px}button:hover{border-color:var(--accent)}button.primary{background:#2563eb;color:white;border-color:#2563eb;font-weight:650}button:disabled{opacity:.5;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:15px}.output{margin:12px 0 0;background:var(--bg);padding:16px;border:1px solid var(--line);border-radius:10px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;min-height:95px;font:13px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace}.notice{margin:18px 0 0;color:var(--muted);font-size:13px}.notice strong{color:var(--ink)}.status{font-size:13px;color:var(--muted)}.theme{white-space:nowrap}@media(max-width:760px){.layout{grid-template-columns:1fr}main{margin-top:24px}.card{padding:20px}}@media(max-width:460px){.fields{grid-template-columns:1fr}.field-wide{grid-column:auto}.top{padding:14px 18px}main{padding:0 18px 40px}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);line-height:1.5}a{color:var(--accent)}header{border-bottom:1px solid var(--line);background:var(--panel)}.top{max-width:1000px;margin:auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-weight:750;text-decoration:none;color:var(--ink)}.top nav{display:flex;align-items:center;gap:16px}.small{font-size:13px;color:var(--muted)}main{max-width:1000px;margin:36px auto;padding:0 24px 60px}.back{font-size:14px;text-decoration:none}h1{font-size:clamp(26px,4vw,37px);margin:10px 0 8px;letter-spacing:-.03em}h2{font-size:18px;margin:0 0 16px}.intro{color:var(--muted);margin:0 0 28px}.layout{display:grid;grid-template-columns:1.1fr 1fr;gap:20px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;min-width:0}.fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}label{display:block;font-size:14px;font-weight:650;margin-bottom:7px}.field-wide{grid-column:1/-1}input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--input);border:1px solid var(--line);border-radius:9px;padding:11px 12px;outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--soft)}.checkbox-label{display:flex;align-items:center;gap:9px;font-weight:500;margin:0}.checkbox-label input{width:auto;flex:0 0 auto;accent-color:var(--accent)}.hint{font-size:12px;color:var(--muted);margin:6px 0 0}.error{color:#cf3e4e;font-size:13px;min-height:20px}button{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);padding:9px 14px}button:hover{border-color:var(--accent)}button.primary{background:#2563eb;color:white;border-color:#2563eb;font-weight:650}button:disabled{opacity:.5;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:15px}.output{margin:12px 0 0;background:var(--bg);padding:16px;border:1px solid var(--line);border-radius:10px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;min-height:95px;font:13px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace}.notice{margin:18px 0 0;color:var(--muted);font-size:13px}.notice strong{color:var(--ink)}.status{font-size:13px;color:var(--muted)}.theme{white-space:nowrap}@media(max-width:760px){.layout{grid-template-columns:1fr}main{margin-top:24px}.card{padding:20px}}@media(max-width:460px){.fields{grid-template-columns:1fr}.field-wide{grid-column:auto}.top{padding:14px 18px}main{padding:0 18px 40px}}
 </style>
 </head>
 <body>
@@ -27,9 +27,10 @@
 <div><label for="customExtension">Custom extension</label><input id="customExtension" maxlength="16" placeholder="e.g. dat" disabled></div>
 <div class="field-wide"><label for="filename">File name (without extension)</label><input id="filename" maxlength="150" autocomplete="off" placeholder="test-file"></div>
 <div class="field-wide"><label for="folder">Destination folder (Windows)</label><input id="folder" autocomplete="off" spellcheck="false" placeholder="C:\Temp\QA"></div>
+<div class="field-wide"><label class="checkbox-label" for="createDirectory"><input id="createDirectory" type="checkbox" checked> Create directory if missing</label></div>
 </div>
 <p class="error" id="error" role="alert" aria-live="polite"></p>
-<p class="hint">The destination folder is created automatically if it does not exist. An existing file is not overwritten.</p>
+<p class="hint">Enable “Create directory if missing” to include a directory-creation command. An existing file is not overwritten.</p>
 </section>
 <section class="card" aria-labelledby="outputHeading">
 <h2 id="outputHeading">Ready-to-run command</h2>
@@ -46,11 +47,13 @@
 'use strict';
 const key='qa-tools.test-file-generator.v1',themeKey='qa-tools.theme';
 const ids=['size','unit','extension','customExtension','filename','folder'];
+const createDirectory=document.getElementById('createDirectory');
 const el=Object.fromEntries([...ids,'error','command','copy','reset','status','themeToggle'].map(id=>[id,document.getElementById(id)]));
 const defaults={size:'10',unit:'MB',extension:'bin',customExtension:'',filename:'test-file',folder:'C:\\Temp\\QA'};
 const supported=['bin','csv','txt','json','xml','pdf','xlsx','docx','zip','png','jpg','mp4','custom'];
 let saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}')||{}}catch{}
 for(const id of ids){el[id].value=(typeof saved[id]==='string'&& (id!=='extension'||supported.includes(saved[id])))?saved[id]:defaults[id]}
+createDirectory.checked=typeof saved.createDirectory==='boolean'?saved.createDirectory:true;
 function theme(t){document.documentElement.dataset.theme=t;el.themeToggle.textContent=t==='dark'?'☀ Light':'☾ Dark';try{localStorage.setItem(themeKey,t)}catch{}}
 let initial='';try{initial=localStorage.getItem(themeKey)||''}catch{}theme(initial==='dark'||initial==='light'?initial:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
 el.themeToggle.addEventListener('click',()=>theme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
@@ -73,17 +76,17 @@ const v=validate();if(typeof v==='string'){el.error.textContent=v;el.command.tex
 el.error.textContent='';
 const bytes=v.n*(v.unit==='GB'?1073741824:1048576);
 const path=v.folder+'\\'+v.name+'.'+v.ext;
-el.command.textContent='if not exist "'+v.folder+'" mkdir "'+v.folder+'" && fsutil file createnew "'+path+'" '+bytes;
-// When the folder exists, still create the file.
-el.command.textContent='if not exist "'+v.folder+'" mkdir "'+v.folder+'"\r\nfsutil file createnew "'+path+'" '+bytes;
+const fileCommand='fsutil file createnew "'+path+'" '+bytes;
+el.command.textContent=(createDirectory.checked?'if not exist "'+v.folder+'" mkdir "'+v.folder+'"\r\n':'')+fileCommand;
 el.copy.disabled=false;
 }
-const state=Object.fromEntries(ids.map(id=>[id,el[id].value]));try{localStorage.setItem(key,JSON.stringify(state))}catch{}
+const state=Object.fromEntries(ids.map(id=>[id,el[id].value]));state.createDirectory=createDirectory.checked;try{localStorage.setItem(key,JSON.stringify(state))}catch{}
 el.status.textContent='';
 }
 for(const id of ids){el[id].addEventListener('input',update);el[id].addEventListener('change',update)}
+createDirectory.addEventListener('change',update);
 el.copy.addEventListener('click',async()=>{if(el.copy.disabled)return;const value=el.command.textContent;try{await navigator.clipboard.writeText(value);el.status.textContent='Copied'}catch{const ta=document.createElement('textarea');ta.value=value;document.body.append(ta);ta.select();try{el.status.textContent=document.execCommand('copy')?'Copied':'Select and copy the command above'}catch{el.status.textContent='Select and copy the command above'}ta.remove()}});
-el.reset.addEventListener('click',()=>{for(const id of ids)el[id].value=defaults[id];update()});
+el.reset.addEventListener('click',()=>{for(const id of ids)el[id].value=defaults[id];createDirectory.checked=true;update()});
 update();
 })();
 </script>
